@@ -8,14 +8,14 @@ db_user='root'
 db_password='abcd6789'
 db_name='bash'
 
-backup_save_path='/home/backups'
-
-mkdir -p $backup_save_path
-
 if [[ "$(whoami)" != "root" ]]; then
     echo  "you must be root to run this script . Try again with the sudo"
     exit 2
 fi
+
+backup_save_path='/home/backups'
+
+mkdir -p $backup_save_path
 
 
 
