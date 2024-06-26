@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#######################################################################################################################################################
+### author: hosein aghahoseini @ matin international group
+### created at: June 26 2024 09:32  GMT+3
+### last modified: June 26 2024 09:32  GMT+3
+### description: it will keep last 7 days(include today) tables and archive other tables based on "a1_logs_%y%m%d" pattern and save them under /home/backups
+#######################################################################################################################################################
 
 
 db_host='127.0.0.1'
