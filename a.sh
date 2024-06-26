@@ -20,7 +20,7 @@ fi
 
 
 #now table_names is array
-table_names=(`mysql -u $db_user -P $db_port -p$db_password -h $db_host -e "USE bash;SHOW TABLES LIKE 'a1_logs_%';" | grep a1 | grep -v bash`)
+all_table_names=(`mysql -u $db_user -P $db_port -p$db_password -h $db_host -e "USE bash;SHOW TABLES LIKE 'a1_logs_%';" | grep a1 | grep -v bash`)
 #echo ${table_names[@]};
 
 
@@ -29,28 +29,26 @@ table_names=(`mysql -u $db_user -P $db_port -p$db_password -h $db_host -e "USE b
 #output of above command after pipe 2024-06-18
 seven_days_ago=`mysql -u $db_user -P $db_port -p$db_password -h $db_host -e "SELECT CURDATE() - INTERVAL 7 DAY;" | sed -n '2p'` 
 
-#convert 24-06-18 to 240618
+#convert 2024-06-18 to 20240618
 #seven_days_ago=`date -d $seven_days_ago +'%y%m%d'`
 seven_days_ago=`date -d $seven_days_ago +'%Y%m%d'`
 
 
 
 
-for table in "${table_names[@]}"
+for single_table_name in "${all_table_names[@]}"
 do
-    #convert a1_logs_240527 to 240527
-    date_section_in_table_name=`echo $table | awk -F"_" '{ print $3 }'`
+    #convert a1_logs_20240527 to 20240527
+    date_section_in_table_name=`echo $single_table_name | awk -F"_" '{ print $3 }'`
 
-    backup_file_name=$table".sql.gz"
+    backup_file_name=$single_table_name".sql.gz"
 
 
     if [ $seven_days_ago  -gt $date_section_in_table_name ]; then
 
-        mysqldump -P $db_port -h $db_host --user=$db_user --password=$db_password $db_name $table | gzip -c > $backup_save_path/$backup_file_name;
+        mysqldump -P $db_port -h $db_host --user=$db_user --password=$db_password $db_name $single_table_name | gzip -c > $backup_save_path/$backup_file_name;
         
-        mysql -u $db_user -P $db_port -p$db_password -h $db_host -e "use $db_name;DROP TABLE IF EXISTS $table;"
+        mysql -u $db_user -P $db_port -p$db_password -h $db_host -e "use $db_name;DROP TABLE IF EXISTS $single_table_name;"
     fi
 
 done
-mysql -u $db_user -P $db_port -p$db_password -h $db_host -e "use $db_name; show tables;"
-ls -l /home/backups/    
