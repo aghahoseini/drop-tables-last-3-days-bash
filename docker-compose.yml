@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  db:
+    image: mysql
+    restart: always
+    secrets:
+      - db_root_password
+    stdin_open: true 
+    tty: true
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+    volumes:
+      - ./mysql_scripts/:/docker-entrypoint-initdb.d/
+    ports:
+      - "3307:3306"
+
+
+
+secrets:
+  db_root_password:
+    file: ./secrets/db_root_password.txt
+
+
+volumes:
+  db_data:
