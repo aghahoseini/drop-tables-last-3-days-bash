@@ -1,0 +1,56 @@
+
+
+how execute script
+ 
+passed_time=20240617;
+
+passed_time must  be a valid date 
+A valid date 
+is a date that available in names of buckup files
+
+you can see valid dates with this commands
+ls /home/backups | awk -F"_" '{ print $3 }' | awk -F "." '{ print $1 }' 
+
+
+
+
+sudo /home/mmd/work/restore/a.sh -t $passed_time
+
+
+////////////////////////////////////////////////////////////////
+
+before execute commands:
+
+passed_time=20240617;
+echo $passed_time 
+
+ls /home/backups
+ls /home/backups | grep '.sql$'
+mysql -u root -P 3307 -pabcd6789  -h 127.0.0.1 -e "use bash; select * from  a1_logs_$passed_time "
+sudo /home/mmd/work/restore/a.sh -t $passed_time
+
+///////////////////////////////////
+
+check script properly worked
+ls /home/backups
+mysql -u root -P 3307 -pabcd6789  -h 127.0.0.1 -e "use bash; select * from  a1_logs_$passed_time "
+
+//////////////////////////////////////////
+
+
+if you want test script again - so execute below commands:
+echo $passed_time 
+ls /home/backups
+ls /home/backups | grep '.sql$'
+
+sudo rm  -rf  a1_logs_20240618.sql  a1_logs_20240617.sql 
+ls /home/backups
+mysql -u root -P 3307 -pabcd6789  -h 127.0.0.1 -e "use bash; show tables"
+mysql -u root -P 3307 -pabcd6789  -h 127.0.0.1 -e "use bash; select * from  a1_logs_$passed_time "
+mysql -u root -P 3307 -pabcd6789  -h 127.0.0.1 -e "DROP TABLE IF EXISTS bash.a1_logs_$passed_time ;"
+
+mysql -u root -P 3307 -pabcd6789  -h 127.0.0.1 -e "use bash; select * from  a1_logs_$passed_time "
+
+//////////////////////////////////////////////
+
+
