@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### author: mohammad mahdi shafiei @ matin international group
+### author: hosein aghahoseini @ matin international group
 ### created at: Oct 08 2023 18:30 GMT+3
 ### last modified: Oct 09 2023 10:08 GMT+3
 ### desc: it will keep last 3 days(include today) tables and drop other tables based on "aX_logs_%y%m%d pattern
