@@ -7,9 +7,9 @@
 
 
 
+mkdir -p /home/$USER/logfiles/
 
-
-log_file=./logfiles/log.$(date +%F%T).txt
+log_file=/home/$USER/logfiles/log.$(date +%F%T).txt
 touch $log_file
 exec >> $log_file 2>&1
 
@@ -137,6 +137,6 @@ do
 
 done
 
-sed -i '/Warning/d' "/home/hosein/Desktop/work/backup/logfiles/${log_file:11}"
+sed -i '/Warning/d' "$log_file"
 #above line removes this lines
 #mysql: [Warning] Using a password on the command line interface can be insecure.
