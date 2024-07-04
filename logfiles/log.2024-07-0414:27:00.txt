@@ -1,0 +1,35 @@
+-------2024-07-04-14:27:00------
+ 
+check script executed with root priviledge or not  ... 
+script executed with root priviledge 
+  
+today      : 2024-07-04
+3_days_ago : 2024-07-01
+fetching the names of all tables that 
+Their name is a pattern similar to a1_logs_% and save this table names in a array named all_table_names
+“table names fetched successfully”
+  
+drop table: a2_logs_20240629 
+“The drop process was done successfully”
+  
+drop table: a2_logs_20240630 
+“The drop process was done successfully”
+  
+drop table: a3_logs_20240629 
+“The drop process was done successfully”
+  
+drop table: a3_logs_20240630 
+“The drop process was done successfully”
+  
+drop table: a4_logs_20240629 
+“The drop process was done successfully”
+  
+drop table: a4_logs_20240630 
+“The drop process was done successfully”
+  
+drop table: a5_logs_20240629 
+“The drop process was done successfully”
+  
+drop table: a5_logs_20240630 
+“The drop process was done successfully”
+  

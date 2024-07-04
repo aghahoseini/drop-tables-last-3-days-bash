@@ -30,10 +30,16 @@ all_table_names=(`mysql -u $db_user -P $db_port -p$db_password -h $db_host -e "U
 #echo ${table_names[@]};
 
 
-#calculate 7 days ago time
-#output of above command without pipe --->  line1: CURDATE() - INTERVAL 7 DAY  line 2:2024-06-18
-#output of above command after pipe 2024-06-18
-seven_days_ago=`mysql -u $db_user -P $db_port -p$db_password -h $db_host -e "SELECT CURDATE() - INTERVAL 7 DAY;" | sed -n '2p'` 
+#calculate 3 days ago time
+
+#output of above command without pipe ---> 
+# line1: CURDATE() - INTERVAL 3 DAY 
+# line2:2024-06-18
+
+#output of above command after pipe --->
+# 2024-06-18
+
+seven_days_ago=`mysql -u $db_user -P $db_port -p$db_password -h $db_host -e "SELECT CURDATE() - INTERVAL 3 DAY;" | sed -n '2p'` 
 
 #convert 2024-06-18 to 20240618
 #seven_days_ago=`date -d $seven_days_ago +'%y%m%d'`

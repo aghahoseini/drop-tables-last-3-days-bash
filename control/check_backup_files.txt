@@ -1,0 +1,17 @@
+cd /home/backups
+
+ls -la
+
+sudo gzip -dk a1_logs_20240628.sql.gz 
+ls
+cat a1_logs_20240628.sql | grep "INSERT"
+sudo rm -rf a1_logs_20240628.sql
+
+ls
+
+sudo gzip -dk a1_logs_20240627.sql.gz 
+ls
+cat a1_logs_20240627.sql | grep "INSERT"
+sudo rm -rf a1_logs_20240627.sql
+
+ls

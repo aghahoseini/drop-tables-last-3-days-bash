@@ -1,0 +1,13 @@
+
+cd /home/hosein/Desktop/work/backup/control/
+
+after docker compose up -d ---> ./after_compose.sh
+
+
+test main script ---->  sudo ./backup.sh
+
+check main script , truly worked ( check tables before date x  removed and after that remained or not )---> ./check_table_removals.sh
+
+check main script , truly worked ( check backuped file truly backuped or not  )---> ./check_backup_files.sh
+
+execute_script_again --->
