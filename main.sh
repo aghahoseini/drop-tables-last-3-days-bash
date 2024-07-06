@@ -40,12 +40,12 @@ db_name='bash'
 backup_save_path='/home/backups'
 
 
-#calculate today date
+
 
 
 
 #calculate 3 days ago time
-#output of above command after pipe ---> 2024-06-18
+#output of below command after pipe ---> 2024-06-18
 three_days_ago=`mysql -u $db_user -P $db_port -p$db_password -h $db_host -e "SELECT CURDATE() - INTERVAL 3 DAY;" | sed -n '2p'` 
 
 echo "3_days_ago : $three_days_ago"
